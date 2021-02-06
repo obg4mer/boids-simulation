@@ -48,6 +48,10 @@ public class Vector2 {
         return this;
     }
 
+    public Vector2 setMagnitude(float length) {
+        return normalize().multiply(length);
+    }
+
     public Vector2 rotate(float angle) {
         float sin = - (float) Math.sin(angle);
         float cos = (float) Math.cos(angle);

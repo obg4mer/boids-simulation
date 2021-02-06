@@ -4,9 +4,8 @@
     <list default="true" id="04669459-5155-494a-b275-71d29d14fe54" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/window/AppCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/window/AppCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/window/AppWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/window/AppWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/simulation/Boid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simulation/Boid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/simulation/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simulation/Simulation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/util/Vector2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Vector2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,13 +63,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -91,6 +92,9 @@
       <updated>1612539251660</updated>
       <workItem from="1612539252749" duration="15000" />
       <workItem from="1612539380416" duration="27426000" />
+      <workItem from="1612573885260" duration="42000" />
+      <workItem from="1612610087963" duration="6394000" />
+      <workItem from="1612616909821" duration="1229000" />
     </task>
     <task id="LOCAL-00001" summary="boid movement and rotation">
       <created>1612548193180</created>
@@ -99,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612548193180</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="separation and mouse listener">
+      <created>1612573916376</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1612573916376</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,9 +126,11 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="boid movement and rotation" />
-    <option name="LAST_COMMIT_MESSAGE" value="boid movement and rotation" />
+    <MESSAGE value="separation and mouse listener" />
+    <option name="LAST_COMMIT_MESSAGE" value="separation and mouse listener" />
   </component>
 </project>

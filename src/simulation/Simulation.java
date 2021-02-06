@@ -78,7 +78,7 @@ public class Simulation implements Runnable {
         try {
             lock.lock();
             boids.forEach(b -> b.paint(g2d));
-            boids.forEach(b -> b.paintGizmos(g2d));
+            //boids.forEach(b -> b.paintGizmos(g2d));
 
             painting = false;
             condition.signalAll();

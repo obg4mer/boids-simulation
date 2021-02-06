@@ -53,7 +53,17 @@ public class App {
 
     //region Boid Rules Constraints
 
-    public static final float separationDangerDistance = 0.5f;
+    public static final float separationRange = 0.5f;
+    public static final float separationCap = 0.5f;
+    public static final float separationPriority = 0.5f;
+
+    public static final float alignmentRange = 1.5f;
+    public static final float alignmentCap = 1f;
+    public static final float alignmentPriority = 3f;
+
+    public static final float cohesionRange = 1.5f;
+    public static final float cohesionCap = 0.5f;
+    public static final float cohesionPriority = 0.5f;
 
     //endregion
 
