@@ -74,8 +74,8 @@ public class Boid {
 
             Vector2 newDir = position.clone().subtract(b.position);
 
-            if (newDir.magnitude() < App.separationRange) {
-                newDir.setMagnitude(App.separationRange - newDir.magnitude());
+            if (newDir.magnitude() < App.getSeparationRange()) {
+                newDir.setMagnitude(App.getSeparationRange() - newDir.magnitude());
                 separationDir.add(newDir);
             }
         }
@@ -83,8 +83,8 @@ public class Boid {
         float magnitude = separationDir.magnitude();
 
         if (magnitude > 0)  {
-            if (magnitude > App.separationCap) {
-                float newMagnitude = Util.remap(magnitude, 0, App.separationRange, 0, App.separationCap);
+            if (magnitude > App.getSeparationCap()) {
+                float newMagnitude = Util.remap(magnitude, 0, App.getSeparationRange(), 0, App.getSeparationCap());
                 separationDir.setMagnitude(newMagnitude);
             }
             this.separationDir = separationDir;
@@ -99,18 +99,18 @@ public class Boid {
 
         for (Boid b : boids) {
             if (position.equals(b.position)) continue;
-            if (position.distance(b.position) >= App.alignmentRange) continue;
+            if (position.distance(b.position) >= App.getAlignmentRange()) continue;
 
             float distance = position.distance(b.position);
-            float newMagnitude = Util.remap(distance, 0, App.alignmentRange, App.alignmentCap, 0);
+            float newMagnitude = Util.remap(distance, 0, App.getAlignmentRange(), App.getAlignmentCap(), 0);
             alignmentDir.add(b.direction.clone().setMagnitude(newMagnitude));
         }
 
         float magnitude = alignmentDir.magnitude();
 
         if (magnitude > 0) {
-            if (magnitude > App.alignmentCap) {
-                float newMagnitude = Util.remap(magnitude, 0, App.alignmentRange, 0, App.alignmentCap);
+            if (magnitude > App.getAlignmentCap()) {
+                float newMagnitude = Util.remap(magnitude, 0, App.getAlignmentRange(), 0, App.getAlignmentCap());
                 alignmentDir.setMagnitude(newMagnitude);
             }
             this.alignmentDir = alignmentDir;
@@ -126,7 +126,7 @@ public class Boid {
 
         for (Boid b : boids) {
             if (position.equals(b.position)) continue;
-            if (position.distance(b.position) >= App.cohesionRange) continue;
+            if (position.distance(b.position) >= App.getCohesionRange()) continue;
 
             cohesionDir.add(b.position);
             cohesionDir.subtract(position);
@@ -136,8 +136,8 @@ public class Boid {
         float magnitude = cohesionDir.magnitude();
 
         if (boidsInRange > 0) {
-            if (magnitude > App.cohesionCap) {
-                float newMagnitude = Util.remap(magnitude, 0, App.cohesionRange, 0, App.cohesionCap);
+            if (magnitude > App.getCohesionCap()) {
+                float newMagnitude = Util.remap(magnitude, 0, App.getCohesionRange(), 0, App.getCohesionCap());
                 cohesionDir.setMagnitude(newMagnitude);
             }
             this.cohesionDir = cohesionDir;
@@ -158,9 +158,9 @@ public class Boid {
         float angle = 0;
 
         Vector2 newDirection = new Vector2();
-        if (separationDir != null) newDirection.add(separationDir.clone().multiply(App.separationPriority));
-        if (alignmentDir != null) newDirection.add(alignmentDir.clone().multiply(App.alignmentPriority));
-        if (cohesionDir != null) newDirection.add(cohesionDir.clone().multiply(App.cohesionPriority));
+        if (separationDir != null) newDirection.add(separationDir.clone().multiply(App.getSeparationPriority()));
+        if (alignmentDir != null) newDirection.add(alignmentDir.clone().multiply(App.getAlignmentPriority()));
+        if (cohesionDir != null) newDirection.add(cohesionDir.clone().multiply(App.getCohesionPriority()));
 
         if (newDirection.sqrMagnitude() > 0) {
             angle = newDirection.angle() - direction.angle();

@@ -8,21 +8,16 @@ import java.awt.*;
 
 public class AppWindow extends JFrame {
 
-    private AppCanvas appCanvas;
+    private final AppMainPanel panel;
 
     public AppWindow(String title) {
         super(title);
 
-        Dimension dim = new Dimension(App.width * App.pixelsPerCell, App.height * App.pixelsPerCell);
-        getContentPane().setMinimumSize(dim);
-        getContentPane().setMaximumSize(dim);
-        getContentPane().setPreferredSize(dim);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-        appCanvas = new AppCanvas();
-        add(appCanvas);
+        panel = new AppMainPanel();
+        setContentPane(panel.getPanel());
 
         setVisible(true);
         pack();
@@ -31,7 +26,7 @@ public class AppWindow extends JFrame {
     //region Class Methods
 
     public void paintCanvas() {
-        appCanvas.repaint();
+        panel.repaint();
     }
 
     //endregion

@@ -8,6 +8,8 @@ import util.Vector2;
 import java.awt.*;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class App {
 
@@ -29,15 +31,15 @@ public class App {
 
     //region Framerate
 
-    public static final int framerate = 30;
+    public static final int framerate = 60;
     public static final int millisPerFrame = Math.round(1000/(float)framerate);
 
     //endregion
 
     //region Size
 
-    public static final int height = 3;
-    public static final int width = 3;
+    public static final int height = 7;
+    public static final int width = 7;
     public static final int pixelsPerCell = 100;
 
     public static final float boidSize = 0.1f;
@@ -53,17 +55,191 @@ public class App {
 
     //region Boid Rules Constraints
 
-    public static final float separationRange = 0.5f;
-    public static final float separationCap = 0.5f;
-    public static final float separationPriority = 0.5f;
+    private static final ReadWriteLock lock = new ReentrantReadWriteLock();
 
-    public static final float alignmentRange = 1.5f;
-    public static final float alignmentCap = 1f;
-    public static final float alignmentPriority = 3f;
+    private static float separationRange = 0.5f;
+    private static float separationCap = 0.5f;
+    private static float separationPriority = 0.5f;
 
-    public static final float cohesionRange = 1.5f;
-    public static final float cohesionCap = 0.5f;
-    public static final float cohesionPriority = 0.5f;
+    private static float alignmentRange = 1.5f;
+    private static float alignmentCap = 1f;
+    private static float alignmentPriority = 3f;
+
+    private static float cohesionRange = 1.5f;
+    private static float cohesionCap = 0.5f;
+    private static float cohesionPriority = 0.5f;
+
+    //region Getters
+
+    public static float getSeparationRange() {
+        try {
+            lock.readLock().lock();
+            return separationRange;
+        } finally {
+            lock.readLock().unlock();
+        }
+    }
+
+    public static float getSeparationCap() {
+        try {
+            lock.readLock().lock();
+            return separationCap;
+        } finally {
+            lock.readLock().unlock();
+        }
+    }
+
+    public static float getSeparationPriority() {
+        try {
+            lock.readLock().lock();
+            return separationPriority;
+        } finally {
+            lock.readLock().unlock();
+        }
+    }
+
+    public static float getAlignmentRange() {
+        try {
+            lock.readLock().lock();
+            return alignmentRange;
+        } finally {
+            lock.readLock().unlock();
+        }
+    }
+
+    public static float getAlignmentCap() {
+        try {
+            lock.readLock().lock();
+            return alignmentCap;
+        } finally {
+            lock.readLock().unlock();
+        }
+    }
+
+    public static float getAlignmentPriority() {
+        try {
+            lock.readLock().lock();
+            return alignmentPriority;
+        } finally {
+            lock.readLock().unlock();
+        }
+    }
+
+    public static float getCohesionRange() {
+        try {
+            lock.readLock().lock();
+            return cohesionRange;
+        } finally {
+            lock.readLock().unlock();
+        }
+    }
+
+    public static float getCohesionCap() {
+        try {
+            lock.readLock().lock();
+            return cohesionCap;
+        } finally {
+            lock.readLock().unlock();
+        }
+    }
+
+    public static float getCohesionPriority() {
+        try {
+            lock.readLock().lock();
+            return cohesionPriority;
+        } finally {
+            lock.readLock().unlock();
+        }
+    }
+
+
+    //endregion
+
+    //region Setters
+
+    public static void setSeparationRange(float separationRange) {
+        try {
+            lock.writeLock().lock();
+            App.separationRange = separationRange;
+        } finally {
+            lock.writeLock().unlock();
+        }
+    }
+
+    public static void setSeparationCap(float separationCap) {
+        try {
+            lock.writeLock().lock();
+            App.separationCap = separationCap;
+        } finally {
+            lock.writeLock().unlock();
+        }
+    }
+
+    public static void setSeparationPriority(float separationPriority) {
+        try {
+            lock.writeLock().lock();
+            App.separationPriority = separationPriority;
+        } finally {
+            lock.writeLock().unlock();
+        }
+    }
+
+    public static void setAlignmentRange(float alignmentRange) {
+        try {
+            lock.writeLock().lock();
+            App.alignmentRange = alignmentRange;
+        } finally {
+            lock.writeLock().unlock();
+        }
+    }
+
+    public static void setAlignmentCap(float alignmentCap) {
+        try {
+            lock.writeLock().lock();
+            App.alignmentCap = alignmentCap;
+        } finally {
+            lock.writeLock().unlock();
+        }
+    }
+
+    public static void setAlignmentPriority(float alignmentPriority) {
+        try {
+            lock.writeLock().lock();
+            App.alignmentPriority = alignmentPriority;
+        } finally {
+            lock.writeLock().unlock();
+        }
+    }
+
+    public static void setCohesionRange(float cohesionRange) {
+        try {
+            lock.writeLock().lock();
+            App.cohesionRange = cohesionRange;
+        } finally {
+            lock.writeLock().unlock();
+        }
+    }
+
+    public static void setCohesionCap(float cohesionCap) {
+        try {
+            lock.writeLock().lock();
+            App.cohesionCap = cohesionCap;
+        } finally {
+            lock.writeLock().unlock();
+        }
+    }
+
+    public static void setCohesionPriority(float cohesionPriority) {
+        try {
+            lock.writeLock().lock();
+            App.cohesionPriority = cohesionPriority;
+        } finally {
+            lock.writeLock().unlock();
+        }
+    }
+
+
+    //endregion
 
     //endregion
 
