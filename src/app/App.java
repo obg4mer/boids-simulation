@@ -2,6 +2,7 @@ package app;
 
 import app.window.AppWindow;
 import simulation.Boid;
+import simulation.Simulation;
 import util.Vector2;
 
 import java.awt.*;
@@ -10,53 +11,28 @@ import java.util.ArrayList;
 
 public class App {
 
-    private static AppWindow appWindow;
-
-    public static final List<Boid> boids = new ArrayList<>();
+    public static AppWindow appWindow;
+    public static Simulation simulation;
 
     public static void main(String[] args) {
-        boids.add(new Boid(new Vector2(1.5f, 1.5f), 0));
 
+        simulation = new Simulation();
         appWindow = new AppWindow("Boids Simulation");
 
-        run();
+        simulation.addBoid(new Boid(new Vector2(1.4f, 0.5f), (float)(3*Math.PI/2)));
+        simulation.addBoid(new Boid(new Vector2(1.6f, 2.5f), (float)(Math.PI/2)));
+
+        simulation.run();
     }
-
-    //region App Methods
-
-    public static void run() {
-
-        long t1 = System.nanoTime(), t2;
-        long timeShift = 0;
-
-        try {
-
-            while (true) {
-                Thread.sleep(millisPerFrame + timeShift);
-
-                update();
-                paint();
-
-                t2 = System.nanoTime();
-                timeShift = millisPerFrame - (t2 - t1)/1000000;
-                t1 = t2;
-            }
-
-        } catch (InterruptedException ignored) { }
-
-    }
-
-    private static void update() {
-        boids.forEach(Boid::update);
-    }
-
-    private static void paint() {
-        appWindow.paintCanvas();
-    }
-
-    //endregion
 
     //region Config
+
+    //region Framerate
+
+    public static final int framerate = 30;
+    public static final int millisPerFrame = Math.round(1000/(float)framerate);
+
+    //endregion
 
     //region Size
 
@@ -70,10 +46,14 @@ public class App {
 
     //region Simulation
 
-    public static final int framerate = 30;
-    public static final int millisPerFrame = Math.round(1000/(float)framerate);
+    public static final float boidMovementSpeed = 1/(float)framerate;
+    public static final float boidRotationCap = (1.5f*(float)Math.PI)/(float)framerate;
 
-    public static final float boidSpeed = 1/(float)framerate;
+    //endregion
+
+    //region Boid Rules Constraints
+
+    public static final float separationDangerDistance = 0.5f;
 
     //endregion
 

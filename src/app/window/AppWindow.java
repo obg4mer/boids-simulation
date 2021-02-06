@@ -1,6 +1,7 @@
 package app.window;
 
 import app.App;
+import simulation.Simulation;
 
 import javax.swing.*;
 import java.awt.*;
