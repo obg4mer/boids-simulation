@@ -61,9 +61,9 @@ public class App {
     private static float cohesionCap = 0.5f;
     private static float cohesionPriority = 0.5f;
 
-    public static final float obstacleAvoidanceRange = 1f;
-    public static final float obstacleAvoidanceCap = 1f;
-    public static final float obstacleAvoidancePriority = 5 * (separationPriority + alignmentPriority + cohesionPriority);
+    public static final float obstacleAvoidanceRange = 0.5f;
+    public static final float obstacleAvoidanceCap = 0.5f;
+    public static final float obstacleAvoidancePriority = 3 * (separationPriority + alignmentPriority + cohesionPriority);
 
     //region Getters
 

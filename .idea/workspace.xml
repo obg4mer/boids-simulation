@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04669459-5155-494a-b275-71d29d14fe54" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/window/AppMainPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/window/AppMainPanel.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/window/AppMouseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/window/AppMouseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/window/AppWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/window/AppWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simulation/Boid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simulation/Boid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simulation/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simulation/Simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Vector2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Vector2.java" afterDir="false" />
-    </list>
+    <list default="true" id="04669459-5155-494a-b275-71d29d14fe54" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,6 +45,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/app/window/Teste.form" />
   </component>
   <component name="RunManager" selected="Application.App">
@@ -83,17 +75,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
@@ -116,7 +97,7 @@
       <workItem from="1612616909821" duration="4506000" />
       <workItem from="1612622232078" duration="4952000" />
       <workItem from="1612627223128" duration="1566000" />
-      <workItem from="1612636294986" duration="9278000" />
+      <workItem from="1612636294986" duration="9509000" />
     </task>
     <task id="LOCAL-00001" summary="boid movement and rotation">
       <created>1612548193180</created>
@@ -146,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612626973953</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="obstacle avoidance kinda working">
+      <created>1612658412357</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1612658412357</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,6 +157,7 @@
     <MESSAGE value="separation and mouse listener" />
     <MESSAGE value="alignment and cohesion" />
     <MESSAGE value="app working" />
-    <option name="LAST_COMMIT_MESSAGE" value="app working" />
+    <MESSAGE value="obstacle avoidance kinda working" />
+    <option name="LAST_COMMIT_MESSAGE" value="obstacle avoidance kinda working" />
   </component>
 </project>
