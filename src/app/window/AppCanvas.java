@@ -1,9 +1,6 @@
 package app.window;
 
 import app.App;
-import simulation.Boid;
-import simulation.Simulation;
-import util.Vector2;
 
 import javax.swing.*;
 import java.awt.*;

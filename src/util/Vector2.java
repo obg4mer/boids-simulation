@@ -36,9 +36,9 @@ public class Vector2 {
         return this;
     }
 
-    public Vector2 invert() {
-        this.x *= -1;
-        this.y *= -1;
+    public Vector2 divide(float value) {
+        this.x /= value;
+        this.y /= value;
         return this;
     }
 

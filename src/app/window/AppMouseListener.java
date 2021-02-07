@@ -2,21 +2,26 @@ package app.window;
 
 import app.App;
 import simulation.Boid;
-import simulation.Simulation;
+import simulation.Obstacle;
 import util.Vector2;
 
+import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Random;
 
 public class AppMouseListener implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        Vector2 position = new Vector2(((float)e.getX())/App.pixelsPerCell, ((float)e.getY())/App.pixelsPerCell);
-        float angle = (float)(Math.random() * 2 * Math.PI);
+        Vector2 position = new Vector2((e.getX())/(float)App.pixelsPerCell, (e.getY())/(float)App.pixelsPerCell);
 
-        App.simulation.addBoid(new Boid(position, angle));
+        if (SwingUtilities.isLeftMouseButton(e)) {
+            float angle = (float)(Math.random() * 2 * Math.PI);
+            App.simulation.addBoid(new Boid(position, angle));
+        } else if (SwingUtilities.isRightMouseButton(e)) {
+            App.simulation.addObstacle(new Obstacle(position));
+        }
+
     }
 
     @Override

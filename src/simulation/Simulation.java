@@ -1,7 +1,6 @@
 package simulation;
 
 import app.App;
-import app.window.AppWindow;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -12,16 +11,20 @@ import java.util.stream.Collectors;
 public class Simulation implements Runnable {
 
     private final List<Boid> boids;
+    private final List<Obstacle> obstacles;
 
-    private final Lock lock;
-    private final Condition condition;
+    private final Lock boidsLock;
+    private final Lock obstaclesLock;
+    private final Condition paintingCondition;
     private boolean painting;
 
     public Simulation() {
         this.boids = new ArrayList<>();
+        this.obstacles = new ArrayList<>();
 
-        this.lock = new ReentrantLock();
-        this.condition = lock.newCondition();
+        this.boidsLock = new ReentrantLock();
+        this.obstaclesLock = new ReentrantLock();
+        this.paintingCondition = boidsLock.newCondition();
         painting = false;
     }
 
@@ -53,37 +56,39 @@ public class Simulation implements Runnable {
 
     private void update() {
         try{
-            lock.lock();
+            boidsLock.lock();
             List<Boid> boidsClone = getBoids();
-            boids.forEach(b -> b.update(boidsClone));
+            List<Obstacle> obstaclesClone = getObstacles();
+            boids.forEach(b -> b.update(boidsClone, obstaclesClone));
         } finally {
-            lock.unlock();
+            boidsLock.unlock();
         }
     }
 
     private void callRepaint() {
         try {
-            lock.lock();
+            boidsLock.lock();
             App.appWindow.paintCanvas();
             painting = true;
-            while (painting) condition.await();
+            while (painting) paintingCondition.await();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            lock.unlock();
+            boidsLock.unlock();
         }
     }
 
     public void paint(Graphics2D g2d) {
         try {
-            lock.lock();
+            boidsLock.lock();
             boids.forEach(b -> b.paint(g2d));
+            obstacles.forEach(o -> o.paint(g2d));
             //boids.forEach(b -> b.paintGizmos(g2d));
 
             painting = false;
-            condition.signalAll();
+            paintingCondition.signalAll();
         } finally {
-            lock.unlock();
+            boidsLock.unlock();
         }
     }
 
@@ -93,15 +98,38 @@ public class Simulation implements Runnable {
 
     public void addBoid(Boid boid) {
         try {
-            lock.lock();
+            boidsLock.lock();
             boids.add(boid);
         } finally {
-            lock.unlock();
+            boidsLock.unlock();
         }
     }
 
     public List<Boid> getBoids() {
-        return boids.stream().map(Boid::clone).collect(Collectors.toList());
+        try {
+            boidsLock.lock();
+            return boids.stream().map(Boid::clone).collect(Collectors.toList());
+        } finally {
+            boidsLock.unlock();
+        }
+    }
+
+    public void addObstacle(Obstacle obstacle) {
+        try{
+            obstaclesLock.lock();
+            obstacles.add(obstacle);
+        } finally {
+            obstaclesLock.unlock();
+        }
+    }
+
+    public List<Obstacle> getObstacles() {
+        try {
+            obstaclesLock.lock();
+            return obstacles.stream().map(Obstacle::clone).collect(Collectors.toList());
+        } finally {
+            obstaclesLock.unlock();
+        }
     }
 
     //endregion

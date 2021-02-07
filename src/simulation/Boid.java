@@ -16,19 +16,20 @@ public class Boid {
         this.position = position;
         this.direction = Vector2.fromAngle(angle);
 
-        separationDir = null;
-        alignmentDir = null;
-        cohesionDir = null;
+        separationDir = new Vector2();
+        alignmentDir = new Vector2();
+        cohesionDir = new Vector2();
+        obstacleAvoidanceDir = new Vector2();
     }
 
     //region Simulation Methods
 
-    public void update(List<Boid> boids) {
-        //rotate(Math.PI/2/App.framerate);
+    public void update(List<Boid> boids, List<Obstacle> obstacles) {
 
         separation(boids);
         alignment(boids);
         cohesion(boids);
+        obstacleAvoidance(obstacles);
 
         rotate();
         move();
@@ -58,91 +59,98 @@ public class Boid {
         if (cohesionDir != null) paintArrow(g2d, cohesionDir, Color.GREEN);
     }
 
+    private void paintArrow(Graphics2D g2d, Vector2 direction, Color color) {
+        Vector2 p1 = new Vector2(App.boidSize,0).rotate(direction.angle()).add(position);
+        Vector2 p2 = p1.clone().add(direction);
+
+        p1.multiply(App.pixelsPerCell);
+        p2.multiply(App.pixelsPerCell);
+
+        g2d.setColor(color);
+        g2d.drawLine(Math.round(p1.x), Math.round(p1.y), Math.round(p2.x), Math.round(p2.y));
+    }
+
     //endregion
 
     //region Boid Rules
 
-    // Resulting vector's magnitude must be lower that it's cap.
-
-    private Vector2 separationDir;
+    private final Vector2 separationDir;
     private void separation(List<Boid> boids) {
 
-        Vector2 separationDir = new Vector2();
+        separationDir.multiply(0);
 
         for (Boid b : boids) {
-            if (position.equals(b.position)) continue;
-
-            Vector2 newDir = position.clone().subtract(b.position);
-
-            if (newDir.magnitude() < App.getSeparationRange()) {
-                newDir.setMagnitude(App.getSeparationRange() - newDir.magnitude());
-                separationDir.add(newDir);
+            Vector2 dir = position.clone().subtract(b.position);
+            float distance = dir.magnitude();
+            if (distance > 0 && distance < App.getSeparationRange()) {
+                dir.setMagnitude(App.getSeparationRange() - distance);
+                separationDir.add(dir);
             }
         }
 
         float magnitude = separationDir.magnitude();
-
-        if (magnitude > 0)  {
-            if (magnitude > App.getSeparationCap()) {
-                float newMagnitude = Util.remap(magnitude, 0, App.getSeparationRange(), 0, App.getSeparationCap());
-                separationDir.setMagnitude(newMagnitude);
-            }
-            this.separationDir = separationDir;
+        if (magnitude > App.getSeparationCap())  {
+            separationDir.setMagnitude(App.getSeparationCap());
         }
-        else this.separationDir = null;
     }
 
-    private Vector2 alignmentDir;
+    private final Vector2 alignmentDir;
     private void alignment(List<Boid> boids) {
-
-        Vector2 alignmentDir = new Vector2();
+        alignmentDir.multiply(0);
 
         for (Boid b : boids) {
-            if (position.equals(b.position)) continue;
-            if (position.distance(b.position) >= App.getAlignmentRange()) continue;
-
             float distance = position.distance(b.position);
-            float newMagnitude = Util.remap(distance, 0, App.getAlignmentRange(), App.getAlignmentCap(), 0);
-            alignmentDir.add(b.direction.clone().setMagnitude(newMagnitude));
+            if (distance > 0 && distance < App.getAlignmentRange()) {
+                float newMagnitude = Util.remap(distance, 0, App.getAlignmentRange(), App.getAlignmentCap(), 0);
+                alignmentDir.add(b.direction.clone().setMagnitude(newMagnitude));
+            }
         }
 
         float magnitude = alignmentDir.magnitude();
-
-        if (magnitude > 0) {
-            if (magnitude > App.getAlignmentCap()) {
-                float newMagnitude = Util.remap(magnitude, 0, App.getAlignmentRange(), 0, App.getAlignmentCap());
-                alignmentDir.setMagnitude(newMagnitude);
-            }
-            this.alignmentDir = alignmentDir;
+        if (magnitude > App.getAlignmentCap()) {
+            alignmentDir.setMagnitude(App.getAlignmentCap());
         }
-        else this.alignmentDir = null;
     }
 
-    private Vector2 cohesionDir;
+    private final Vector2 cohesionDir;
     private void cohesion(List<Boid> boids) {
-
-        Vector2 cohesionDir = new Vector2();
+        cohesionDir.multiply(0);
         int boidsInRange = 0;
 
         for (Boid b : boids) {
-            if (position.equals(b.position)) continue;
-            if (position.distance(b.position) >= App.getCohesionRange()) continue;
+            float distance = position.distance(b.position);
+            if (distance > 0 && distance < App.getCohesionRange()) {
+                cohesionDir.add(b.position);
+                boidsInRange++;
+            }
+        }
 
-            cohesionDir.add(b.position);
-            cohesionDir.subtract(position);
-            boidsInRange++;
+        if (boidsInRange > 0) {
+            cohesionDir.subtract(position.clone().multiply(boidsInRange));
         }
 
         float magnitude = cohesionDir.magnitude();
-
-        if (boidsInRange > 0) {
-            if (magnitude > App.getCohesionCap()) {
-                float newMagnitude = Util.remap(magnitude, 0, App.getCohesionRange(), 0, App.getCohesionCap());
-                cohesionDir.setMagnitude(newMagnitude);
-            }
-            this.cohesionDir = cohesionDir;
+        if (magnitude > App.getCohesionCap()) {
+            cohesionDir.setMagnitude(App.getCohesionCap());
         }
-        else this.cohesionDir = null;
+    }
+
+    private final Vector2 obstacleAvoidanceDir;
+    private void obstacleAvoidance(List<Obstacle> obstacles) {
+        obstacleAvoidanceDir.multiply(0);
+
+        for (Obstacle o : obstacles) {
+            Vector2 dir = position.clone().subtract(o.position);
+            float distance = dir.magnitude();
+            if (distance < App.obstacleAvoidanceRange){
+                obstacleAvoidanceDir.add(dir);
+            }
+        }
+
+        float magnitude = obstacleAvoidanceDir.magnitude();
+        if (magnitude > App.obstacleAvoidanceCap) {
+            obstacleAvoidanceDir.setMagnitude(App.obstacleAvoidanceCap);
+        }
     }
 
     //endregion
@@ -158,9 +166,10 @@ public class Boid {
         float angle = 0;
 
         Vector2 newDirection = new Vector2();
-        if (separationDir != null) newDirection.add(separationDir.clone().multiply(App.getSeparationPriority()));
-        if (alignmentDir != null) newDirection.add(alignmentDir.clone().multiply(App.getAlignmentPriority()));
-        if (cohesionDir != null) newDirection.add(cohesionDir.clone().multiply(App.getCohesionPriority()));
+        newDirection.add(separationDir.clone().multiply(App.getSeparationPriority()));
+        newDirection.add(alignmentDir.clone().multiply(App.getAlignmentPriority()));
+        newDirection.add(cohesionDir.clone().multiply(App.getCohesionPriority()));
+        newDirection.add(obstacleAvoidanceDir.clone().multiply(App.obstacleAvoidancePriority));
 
         if (newDirection.sqrMagnitude() > 0) {
             angle = newDirection.angle() - direction.angle();
@@ -174,19 +183,13 @@ public class Boid {
     }
 
     private void move() {
-        //if (separationDir != null) direction = separationDir;
         position.add(direction.clone().multiply(App.boidMovementSpeed));
-    }
 
-    private void paintArrow(Graphics2D g2d, Vector2 direction, Color color) {
-        Vector2 p1 = new Vector2(App.boidSize,0).rotate(direction.angle()).add(position);
-        Vector2 p2 = p1.clone().add(direction);
+        if (position.x > App.width + 0.25f) position.x = -0.25f;
+        else if (position.x < -0.25) position.x = App.width + 0.25f;
 
-        p1.multiply(App.pixelsPerCell);
-        p2.multiply(App.pixelsPerCell);
-
-        g2d.setColor(color);
-        g2d.drawLine(Math.round(p1.x), Math.round(p1.y), Math.round(p2.x), Math.round(p2.y));
+        if (position.y > App.height + 0.25f) position.y = -0.25f;
+        else if (position.y < -0.25f) position.y = App.height + 0.25f;
     }
 
     //endregion

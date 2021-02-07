@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04669459-5155-494a-b275-71d29d14fe54" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/window/AppCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/window/AppCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/window/AppMainPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/window/AppMainPanel.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/window/AppMouseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/window/AppMouseListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/window/AppWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/window/AppWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/simulation/Boid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simulation/Boid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/simulation/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simulation/Simulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/Vector2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Vector2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,13 +19,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -111,7 +114,9 @@
       <workItem from="1612573885260" duration="42000" />
       <workItem from="1612610087963" duration="6394000" />
       <workItem from="1612616909821" duration="4506000" />
-      <workItem from="1612622232078" duration="4508000" />
+      <workItem from="1612622232078" duration="4952000" />
+      <workItem from="1612627223128" duration="1566000" />
+      <workItem from="1612636294986" duration="9278000" />
     </task>
     <task id="LOCAL-00001" summary="boid movement and rotation">
       <created>1612548193180</created>
@@ -134,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612618197351</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="app working">
+      <created>1612626973953</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1612626973953</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +168,7 @@
     <MESSAGE value="boid movement and rotation" />
     <MESSAGE value="separation and mouse listener" />
     <MESSAGE value="alignment and cohesion" />
-    <option name="LAST_COMMIT_MESSAGE" value="alignment and cohesion" />
+    <MESSAGE value="app working" />
+    <option name="LAST_COMMIT_MESSAGE" value="app working" />
   </component>
 </project>

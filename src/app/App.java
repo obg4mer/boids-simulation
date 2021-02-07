@@ -1,13 +1,9 @@
 package app;
 
 import app.window.AppWindow;
-import simulation.Boid;
 import simulation.Simulation;
-import util.Vector2;
 
 import java.awt.*;
-import java.util.List;
-import java.util.ArrayList;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -17,13 +13,8 @@ public class App {
     public static Simulation simulation;
 
     public static void main(String[] args) {
-
         simulation = new Simulation();
         appWindow = new AppWindow("Boids Simulation");
-
-        simulation.addBoid(new Boid(new Vector2(1.4f, 0.5f), (float)(3*Math.PI/2)));
-        simulation.addBoid(new Boid(new Vector2(1.6f, 2.5f), (float)(Math.PI/2)));
-
         simulation.run();
     }
 
@@ -43,13 +34,14 @@ public class App {
     public static final int pixelsPerCell = 100;
 
     public static final float boidSize = 0.1f;
+    public static final float obstacleSize = 0.2f;
 
     //endregion
 
     //region Simulation
 
-    public static final float boidMovementSpeed = 1/(float)framerate;
-    public static final float boidRotationCap = (1.5f*(float)Math.PI)/(float)framerate;
+    public static final float boidMovementSpeed = 1.5f/(float)framerate;
+    public static final float boidRotationCap = (float)Math.PI/(float)framerate;
 
     //endregion
 
@@ -58,16 +50,20 @@ public class App {
     private static final ReadWriteLock lock = new ReentrantReadWriteLock();
 
     private static float separationRange = 0.5f;
-    private static float separationCap = 0.5f;
-    private static float separationPriority = 0.5f;
+    private static float separationCap = 1f;
+    private static float separationPriority = 1f;
 
-    private static float alignmentRange = 1.5f;
+    private static float alignmentRange = 0.5f;
     private static float alignmentCap = 1f;
     private static float alignmentPriority = 3f;
 
-    private static float cohesionRange = 1.5f;
+    private static float cohesionRange = 0.5f;
     private static float cohesionCap = 0.5f;
     private static float cohesionPriority = 0.5f;
+
+    public static final float obstacleAvoidanceRange = 1f;
+    public static final float obstacleAvoidanceCap = 1f;
+    public static final float obstacleAvoidancePriority = 5 * (separationPriority + alignmentPriority + cohesionPriority);
 
     //region Getters
 
@@ -247,6 +243,7 @@ public class App {
 
     public static final Color colorBackground = new Color(45, 48, 71);
     public static final Color colorBoids = new Color(65, 157, 120);
+    public static final Color colorObstacles = new Color(158, 29, 29);
 
     //endregion
 
