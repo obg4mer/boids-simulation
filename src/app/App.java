@@ -14,7 +14,7 @@ public class App {
 
     public static void main(String[] args) {
         simulation = new Simulation();
-        appWindow = new AppWindow("Boids Simulation");
+        appWindow = new AppWindow("Flocking Simulation");
         simulation.run();
     }
 

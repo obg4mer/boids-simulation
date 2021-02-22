@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/boids-simulation.iml" filepath="$PROJECT_DIR$/boids-simulation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flocking-simulation.iml" filepath="$PROJECT_DIR$/flocking-simulation.iml" />
     </modules>
   </component>
 </project>

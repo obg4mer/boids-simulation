@@ -7,9 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04669459-5155-494a-b275-71d29d14fe54" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/boids_simulation_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/boids_simulation_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/window/AppMainPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/window/AppMainPanel.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/window/AppMainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/window/AppMainPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boids-simulation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/flocking-simulation.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +62,7 @@
   <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="app.App" />
-      <module name="boids-simulation" />
+      <module name="flocking-simulation" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="app.*" />
@@ -73,7 +75,7 @@
     </configuration>
     <configuration name="AppMainPanel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="app.window.AppMainPanel" />
-      <module name="boids-simulation" />
+      <module name="flocking-simulation" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="app.window.*" />
@@ -91,6 +93,53 @@
         </value>
       </option>
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="flocking-simulation" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="flocking-simulation" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -123,7 +172,7 @@
       <workItem from="1612734256900" duration="740000" />
       <workItem from="1612992485998" duration="80000" />
       <workItem from="1613259543521" duration="77000" />
-      <workItem from="1613988051607" duration="238000" />
+      <workItem from="1613988051607" duration="349000" />
     </task>
     <task id="LOCAL-00001" summary="boid movement and rotation">
       <created>1612548193180</created>
@@ -167,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612698702430</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="executable">
+      <created>1613988309599</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1613988309599</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,6 +248,7 @@
     <MESSAGE value="app working" />
     <MESSAGE value="obstacle avoidance kinda working" />
     <MESSAGE value="better initial settings" />
-    <option name="LAST_COMMIT_MESSAGE" value="better initial settings" />
+    <MESSAGE value="executable" />
+    <option name="LAST_COMMIT_MESSAGE" value="executable" />
   </component>
 </project>
