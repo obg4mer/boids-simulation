@@ -38,14 +38,6 @@ public class AppMainPanel {
     private JSlider cohesionPrioritySlider;
     private JLabel cohesionPriorityLabel;
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Boids Simulation");
-        AppMainPanel appMainPanel = new AppMainPanel();
-        frame.setContentPane(appMainPanel.mainPanel);
-        frame.setVisible(true);
-        frame.pack();
-    }
-
     public AppMainPanel() {
         setupSlider(separationRangeSlider, separationRangeLabel, App::setSeparationRange, App::getSeparationRange);
         setupSlider(separationCapSlider, separationCapLabel, App::setSeparationCap, App::getSeparationCap);

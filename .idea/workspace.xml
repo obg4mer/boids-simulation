@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="boids-simulation:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="04669459-5155-494a-b275-71d29d14fe54" name="Default Changelist" comment="" />
+    <list default="true" id="04669459-5155-494a-b275-71d29d14fe54" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/window/AppMainPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/window/AppMainPanel.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/window/AppMainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/window/AppMainPanel.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,7 +49,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/app/window/Teste.form" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/META-INF" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -75,6 +84,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
@@ -98,6 +118,12 @@
       <workItem from="1612622232078" duration="4952000" />
       <workItem from="1612627223128" duration="1566000" />
       <workItem from="1612636294986" duration="9509000" />
+      <workItem from="1612698487976" duration="1473000" />
+      <workItem from="1612707101750" duration="1784000" />
+      <workItem from="1612734256900" duration="740000" />
+      <workItem from="1612992485998" duration="80000" />
+      <workItem from="1613259543521" duration="77000" />
+      <workItem from="1613988051607" duration="238000" />
     </task>
     <task id="LOCAL-00001" summary="boid movement and rotation">
       <created>1612548193180</created>
@@ -134,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612658412357</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="better initial settings">
+      <created>1612698702430</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1612698702430</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +191,7 @@
     <MESSAGE value="alignment and cohesion" />
     <MESSAGE value="app working" />
     <MESSAGE value="obstacle avoidance kinda working" />
-    <option name="LAST_COMMIT_MESSAGE" value="obstacle avoidance kinda working" />
+    <MESSAGE value="better initial settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="better initial settings" />
   </component>
 </project>
